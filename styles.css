@@ -1,0 +1,160 @@
+/* استيراد خط Cairo من Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+/* إعدادات عامة للصفحة */
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #FDFBF5;
+    color: #4A4A4A;
+}
+
+/* تنسيق شريط التنقل */
+.active-nav {
+    color: #D97706;
+    border-bottom: 2px solid #D97706;
+    font-weight: 700;
+}
+.img{
+    margin-top: 100px;
+}
+.inactive-nav {
+    color: #4A4A4A;
+}
+
+/* تنسيق أقسام المحتوى */
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* تنسيق المخططات */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    max-height: 50vh;
+}
+
+/* تنسيق الخط الزمني */
+.timeline-item-content {
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.timeline-item.active .timeline-item-content {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.timeline-point {
+    background-color: #D97706;
+}
+
+/* تحسينات إضافية للواجهة */
+.hero-image {
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-image:hover {
+    transform: scale(1.05);
+}
+
+/* تنسيق الأزرار */
+.tab-button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tab-button:hover {
+    background-color: rgba(217, 119, 6, 0.1);
+}
+
+/* تنسيق البطاقات */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* تنسيق responsive للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .section-padding {
+        padding: 2rem 1rem;
+    }
+}
+
+/* تحسينات للخط الزمني في الشاشات الصغيرة */
+@media (max-width: 640px) {
+    .timeline-container {
+        margin-right: 0;
+    }
+    
+    .timeline-item {
+        margin-right: 1rem;
+    }
+}
+
+/* تأثيرات التمرير السلس */
+html {
+    scroll-behavior: smooth;
+}
+
+/* تنسيق القائمة المحمولة */
+#mobile-menu {
+    transition: all 0.3s ease;
+}
+
+/* تحسينات إضافية للإمكانية */
+.nav-link:focus,
+.tab-button:focus,
+.timeline-item:focus {
+    outline: 2px solid #D97706;
+    outline-offset: 2px;
+}
+
+/* تنسيق الصور */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* تحسينات الطباعة */
+@media print {
+    .sticky,
+    nav,
+    .tab-button {
+        display: none;
+    }
+    
+    .content-section {
+        display: block !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+}

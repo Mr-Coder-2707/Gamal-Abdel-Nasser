@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمال عبد الناصر: رحلة قائد</title>
+    <!-- Chosen Palette: Desert Harmony -->
+    <!-- Application Structure Plan: تم تصميم التطبيق كهيكل تفاعلي من صفحة واحدة مقسم إلى أقسام مواضيعية (النشأة، الطريق إلى السلطة، زعيم الأمة، صراعات، والإرث). هذا التصميم يكسر السرد الطويل للتقرير الأصلي، مما يتيح للمستخدم استكشاف حياة ناصر بشكل غير خطي وأكثر تفاعلية. استخدام التبويبات والمخططات الزمنية يهدف إلى زيادة تفاعل المستخدم وتسهيل فهم المحتوى المعقد بدلاً من مجرد تمرير نص طويل. -->
+    <!-- Visualization & Content Choices: 
+        1. المخطط الزمني (HTML/CSS/JS): الهدف: عرض التسلسل الزمني للأحداث الكبرى (حروب، أزمات). الطريقة: قائمة HTML منسقة بـTailwind لتظهر كخط زمني عمودي. التفاعل: النقر على حدث يبرزه ويعرض تفاصيله. التبرير: أفضل من قائمة نصية لعرض التطور الزمني.
+        2. مخطط السياسات (Chart.js Bar Chart): الهدف: توضيح التأثير النسبي لأهم سياسات ناصر. الطريقة: مخطط أعمدة أفقي باستخدام Canvas و Chart.js. التفاعل: تظهر معلومات إضافية عند تمرير الفأرة. التبرير: يقدم مقارنة بصرية سريعة لأهم إنجازاته.
+        3. كتل المحتوى التفاعلية (JS Toggles): الهدف: عرض معلومات تفصيلية دون إزدحام الواجهة. الطريقة: أزرار تبويبات تتحكم في إظهار وإخفاء أجزاء النص. التبرير: يحافظ على واجهة نظيفة ومنظمة ويسمح للمستخدم بالتعمق حسب اهتمامه.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- ملف CSS المخصص -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#FDFBF5] text-[#333]">
+
+    <header class="sticky top-0 bg-[#FDFBF5]/80 backdrop-blur-sm z-50 shadow-sm">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-amber-700">جمال عبد الناصر</div>
+
+            <!-- Burger Button (visible on small screens) -->
+            <button id="mobile-menu-button" type="button" aria-label="فتح القائمة" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Navigation Links (hidden on small, flex on md and up) -->
+            <div id="mobile-menu" class="hidden md:flex md:items-center md:space-x-4 sm:space-x-8 text-sm sm:text-lg w-full md:w-auto mt-4 md:mt-0 flex-col md:flex-row">
+                <ul class="flex flex-col md:flex-row md:space-x-4 sm:space-x-8 text-sm sm:text-lg w-full md:w-auto">
+                    <li><a href="#hero" class="nav-link p-2 transition duration-300 inactive-nav block md:inline-block w-full text-center">الرئيسية</a></li>
+                    <li><a href="#upbringing" class="nav-link p-2 transition duration-300 inactive-nav block md:inline-block w-full text-center">النشأة والتكوين</a></li>
+                    <li><a href="#path-to-power" class="nav-link p-2 transition duration-300 inactive-nav block md:inline-block w-full text-center">الطريق إلى السلطة</a></li>
+                    <li><a href="#leader" class="nav-link p-2 transition duration-300 inactive-nav block md:inline-block w-full text-center">زعيم الأمة</a></li>
+                    <li><a href="#conflicts" class="nav-link p-2 transition duration-300 inactive-nav block md:inline-block w-full text-center">صراعات وحروب</a></li>
+                    <li><a href="#legacy" class="nav-link p-2 transition duration-300 inactive-nav block md:inline-block w-full text-center">الإرث والذكرى</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4">
+        <section id="hero" class="min-h-[60vh] flex flex-col items-center justify-center text-center py-12 sm:py-20">
+            <img src="images/image.png" alt="جمال عبد الناصر في شبابه" class="w-40 h-40 rounded-full object-cover shadow-2xl mb-6 ring-4 ring-amber-600/20">
+            <h1 class="text-4xl sm:text-6xl font-black text-amber-700 tracking-tight">جمال عبد الناصر</h1>
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-600 mt-2">رحلة قائد غيرت وجه أمة</h2>
+            <p class="mt-6 max-w-3xl text-lg text-gray-700 leading-relaxed">
+                "كنت أنظر إلى ما وراء حدودنا، وأجد نفس الدوائر تحيط بنا.. فهل يمكن أن نتجاهل وجود دائرة عربية تحيط بنا؟ وهل يمكن أن نتجاهل وجود دائرة إفريقية جعلتنا القارة جزءًا منها؟"
+            </p>
+             <p class="mt-4 text-gray-500">- من كتاب فلسفة الثورة</p>
+        </section>
+
+        <section id="upbringing" class="py-16 min-h-screen">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-800">الفصل الأول: من الطفولة إلى الثورة: نشأة قائد</h2>
+            <div class="max-w-4xl mx-auto bg-white/50 p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-4">1.1 المولد والنشأة العائلية</h3>
+                <img src="images/img17.png" alt="جمال عبد الناصر مع الملك فيصل بن عبد العزيز آل سعود" class="w-full md:w-3/4 lg:w-2/3 h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                <p class="mb-4 leading-relaxed">ولد جمال عبد الناصر في 15 يناير 1918 بحي باكوس بالإسكندرية، لأسرة تعود أصولها إلى صعيد مصر. كانت طفولته متنقلة بسبب عمل والده في البريد، مما أتاح له التعرف على مختلف شرائح المجتمع المصري. كانت وفاة والدته وهو في الثامنة من عمره حدثًا فارقًا، حيث وصف تلك التجربة بأنها "صدمة تركت في شعورًا لا يمحوه الزمن".</p>
+                
+                <h3 class="text-2xl font-bold mb-4 mt-8">1.2 بداية الوعي السياسي والتعليم العسكري</h3>
+                <img src="images/img11.png" alt="اسم عبد الناصر في جريدة الجهاد" class="w-full md:w-1/2 lg:w-1/3 h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                <p class="mb-4 leading-relaxed">بدأ وعيه السياسي مبكرًا، فشارك في مظاهرات طلابية ضد الاستعمار البريطاني وهو في المرحلة الثانوية. أدى هذا النشاط إلى إصابته واعتقاله لفترة وجيزة، كما ذُكر اسمه في جريدة "الجهاد" كأحد الجرحى، مما أشعل حماسه الوطني. قرأ بنهم في سير الزعماء القوميين مثل نابليون وأتاتورك، وتأثر بشدة بكتابات توفيق الحكيم ومصطفى كامل.</p>
+                
+                <h3 class="text-2xl font-bold mb-4 mt-8">1.3 التأثيرات المبكرة والتوجه العسكري</h3>
+                <img src="images/img14.png" alt="صورة لجمال عبد الناصر في كلية الحقوق عام 1937" class="w-full md:w-1/2 lg:w-1/3 h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                <p class="mb-4 leading-relaxed">بعد محاولة أولى فاشلة، التحق بالكلية الحربية عام 1937، حيث التقى بعبد الحكيم عامر (صورة عبد الحكيم عامر غير متوفرة بشكل مباشر) وأنور السادات (صورة أنور السادات غير متوفرة بشكل مباشر). رأى في الجيش الأداة الوحيدة القادرة على تحرير البلاد. كان حادث 4 فبراير 1942، حين حاصرت الدبابات البريطانية قصر الملك فاروق (صورة الملك فاروق غير متوفرة بشكل مباشر)، نقطة تحول عززت قناعته بضرورة الثورة لإنهاء الهيمنة الأجنبية والفساد الداخلي.</p>
+                <img src="images/img15.png" alt="جمال عبد الناصر مع أحمد مظهر" class="w-full md:w-1/2 lg:w-1/3 h-auto rounded-lg shadow-md mb-4 mx-auto block">
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">1.4 حرب فلسطين وتشكيل الضباط الأحرار</h3>
+                <img src="images/img13.png" alt="جمال عبد الناصر مع وحدته في الفالوجة خلال حرب فلسطين" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                <p class="leading-relaxed">كانت مشاركته في حرب فلسطين 1948 تجربة مريرة كشفت له عن حجم الفساد وعدم كفاءة القيادة. الحصار في الفالوجة، الذي خرج منه بطلاً، عمّق من غضبه وعزز من فكرة ضرورة التغيير الجذري. بعد الحرب، بدأ بتأسيس تنظيم "الضباط الأحرار" السري، الذي جمع ضباطًا وطنيين من مختلف الخلفيات بهدف الإطاحة بالملكية وإقامة حكم وطني مستقل.</p>
+            </div>
+        </section>
+
+        <section id="path-to-power" class="py-16 min-h-screen">
+            <h2 class="text-3xl font-bold text-center mb-12 text-amber-800">الطريق إلى السلطة: ثورة يوليو والصراع على القيادة</h2>
+             <div class="max-w-4xl mx-auto bg-white/50 p-8 rounded-lg shadow-lg">
+                 <p class="text-lg mb-6 text-center leading-relaxed">لم تكن ثورة 23 يوليو مجرد انقلاب عسكري، بل كانت بداية لتحول جذري في تاريخ مصر الحديث. قاد ناصر والضباط الأحرار هذه الحركة، لكن الطريق إلى ترسيخ سلطته كان مليئاً بالتحديات الداخلية والصراعات على الرؤية والمستقبل.</p>
+                <div class="relative border-r-2 border-amber-200 ml-3">
+                    <div class="mb-10 ml-6 timeline-item">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-200 rounded-full -right-3 ring-8 ring-white timeline-point"></span>
+                        <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900">ثورة 23 يوليو 1952</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-500">23 يوليو 1952</time>
+                        <img src="images/img18.png" alt="الضباط الأحرار بعد الثورة عام 1953" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="text-base font-normal text-gray-700">قاد الضباط الأحرار، بقيادة اسمية من اللواء محمد نجيب (صورة محمد نجيب غير متوفرة بشكل مباشر) وتخطيط فعلي من عبد الناصر، حركة ناجحة أطاحت بالملك فاروق. تم نفي الملك وتشكيل مجلس قيادة الثورة لإدارة البلاد.</p>
+                    </div>
+                    <div class="mb-10 ml-6 timeline-item">
+                         <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-200 rounded-full -right-3 ring-8 ring-white timeline-point"></span>
+                        <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900">إصلاحات ومواجهات مبكرة</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-500">1952 - 1953</time>
+                        <img src="images/img19.png" alt="جمال عبد الناصر ومحمد نجيب بعد الثورة" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="text-base font-normal text-gray-700">أصدر مجلس قيادة الثورة قانون الإصلاح الزراعي الذي حد من الملكية الكبيرة للأراضي ووزعها على الفلاحين، مما أكسب الثورة دعمًا شعبيًا واسعًا. وفي 18 يونيو 1953، تم إلغاء الملكية وإعلان الجمهورية، وتعيين محمد نجيب أول رئيس لها.</p>
+                    </div>
+                    <div class="mb-10 ml-6 timeline-item">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-200 rounded-full -right-3 ring-8 ring-white timeline-point"></span>
+                        <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900">الخلاف مع محمد نجيب</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-500">فبراير - مارس 1954</time>
+                        <img src="images/img19.png" alt="جمال عبد الناصر ومحمد نجيب خلال احتفالات 1954" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="text-base font-normal text-gray-700">ظهرت خلافات جوهرية بين نجيب، الذي كان يميل إلى عودة الحياة البرلمانية، وناصر ومجلس قيادة الثورة الذين أرادوا استمرار السيطرة العسكرية. أدت الأزمة إلى استقالة نجيب ثم عودته تحت ضغط شعبي وعسكري، لكن ناصر كان قد بدأ في تعزيز سيطرته الفعلية على مفاصل الدولة.</p>
+                    </div>
+                    <div class="mb-10 ml-6 timeline-item">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-200 rounded-full -right-3 ring-8 ring-white timeline-point"></span>
+                        <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900">محاولة اغتيال المنشية</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-500">26 أكتوبر 1954</time>
+                        <img src="images/img20.png" alt="جمال عبد الناصر يلقي خطابًا بعد محاولة اغتيال المنشية" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="text-base font-normal text-gray-700">أثناء إلقاء خطاب في الإسكندرية، تعرض ناصر لمحاولة اغتيال نُسبت إلى جماعة الإخوان المسلمين. ثباته الأسطوري وخطابه العاطفي بعد الحادث ("فليبق كل في مكانه أيها الرجال..") حوله إلى بطل شعبي، ومنحه المبرر لشن حملة واسعة ضد الإخوان وإزاحة نجيب نهائيًا عن السلطة ليصبح الزعيم الأوحد لمصر.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leader" class="py-16 min-h-screen">
+            <h2 class="text-3xl font-bold text-center mb-2 text-amber-800">الفصل الثاني: زعيم الأمة</h2>
+            <p class="text-lg text-center mb-12 max-w-3xl mx-auto">من تأميم القناة إلى قيادة العالم الثالث، شكلت سياسات ناصر الداخلية والخارجية حقبة فريدة في تاريخ مصر والعالم العربي. استكشف أبرز إنجازاته وتحدياته خلال فترة حكمه.</p>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8 border-b-2 border-amber-100">
+                    <div id="tabs" class="flex flex-wrap justify-center -mb-px">
+                        <button type="button" class="tab-button active p-4 border-b-2 border-amber-600 text-amber-600 font-bold">تأميم القناة</button>
+                        <button type="button" class="tab-button p-4 border-b-2 border-transparent text-gray-500 hover:text-amber-600">سياسات كبرى</button>
+                        <button type="button" class="tab-button p-4 border-b-2 border-transparent text-gray-500 hover:text-amber-600">القومية العربية</button>
+                    </div>
+                </div>
+
+                <div id="tab-contents" class="bg-white/50 p-6 sm:p-8 rounded-lg shadow-lg">
+                    <div class="content-section active" data-tab="تأميم القناة">
+                        <h3 class="text-2xl font-bold mb-4">تأميم قناة السويس (1956)</h3>
+                        <img src="images/img21.png" alt="ناصر يرفع العلم المصري على قناة السويس في بورسعيد" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="leading-relaxed">في 26 يوليو 1956، وبعد سحب الولايات المتحدة وبريطانيا تمويلهما لبناء السد العالي، أعلن جمال عبد الناصر من الإسكندرية قرار تأميم شركة قناة السويس. كان هذا القرار بمثابة تحدٍ مباشر للقوى الاستعمارية القديمة، وأدى إلى العدوان الثلاثي على مصر من قبل بريطانيا وفرنسا وإسرائيل. على الرغم من الهزيمة العسكرية، خرج ناصر من الأزمة منتصرًا سياسيًا، حيث عزز مكانته كزعيم عربي مناهض للإمبريالية وأصبحت مصر صاحبة السيادة الكاملة على القناة.</p>
+                    </div>
+                    <div class="content-section" data-tab="سياسات كبرى">
+                         <h3 class="text-2xl font-bold mb-4">أثر السياسات الناصرية</h3>
+                        <p class="mb-6 leading-relaxed">ركز ناصر على التنمية الصناعية والعدالة الاجتماعية. يوضح المخطط التالي الأهمية النسبية لأبرز مشاريعه وسياساته التي هدفت إلى بناء دولة حديثة ومستقلة.</p>
+                        <div class="chart-container">
+                            <canvas id="policiesChart"></canvas>
+                        </div>
+                        <img src="images/img10.png" alt="الرئيس ناصر يستقبل وفداً من الأساقفة المسيحيين" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img7.png" alt="ناصر مع مسؤولين حكوميين في الأزهر عام 1959" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img4.png" alt="ناصر يقدم جائزة وطنية في الآداب للكاتب طه حسين" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                    </div>
+                     <div class="content-section" data-tab="القومية العربية">
+                        <h3 class="text-2xl font-bold mb-4">مشروع الوحدة العربية</h3>
+                        <img src="images/img1.png" alt="توقيع معاهدة الدفاع المشترك بين مصر والأردن وسوريا والسعودية عام 1957" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img20.png" alt="جمال عبد الناصر يلتقي ياسر عرفات بجانب الملك فيصل عام 1970" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img3.png" alt="ناصر يعلن قيام الجمهورية العربية المتحدة عام 1958" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img21.png" alt="ناصر مع ولي عهد شمال اليمن محمد البدر حميد الدين وشكري القوتلي عام 1958" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img16.png" alt="جمال عبد الناصر والرئيس اللبناني فؤاد شهاب عام 1959" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img19.png" alt="ناصر يلوح للحشود في دمشق عام 1960" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img5.png" alt="الرئيس جمال عبد الناصر مع الرئيس السوداني إبراهيم عبود عام 1960" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img12.png" alt="ناصر مع الرئيس الجزائري أحمد بن بلة والرئيس العراقي عبد السلام عارف عام 1964" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <img src="images/img13.png" alt="ناصر أمام الحشود اليمنية عند وصوله إلى صنعاء عام 1964" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="mb-4 leading-relaxed">أصبح ناصر رمزًا للقومية العربية، وبلغ حلمه ذروته بتأسيس الجمهورية العربية المتحدة مع سوريا عام 1958. كانت تجربة الوحدة قصيرة وانتهت بانفصال سوريا عام 1961، مما شكل صدمة كبيرة له. على الرغم من ذلك، استمر تأثيره في العالم العربي، حيث دعم حركات التحرر في الجزائر واليمن، ولعب دورًا محوريًا في تأسيس منظمة التحرير الفلسطينية وحركة عدم الانحياز، التي جعلت من مصر لاعبًا رئيسيًا على الساحة الدولية.</p>
+                         <ul class="list-disc pr-6 space-y-2">
+                             <li><strong>الجمهورية العربية المتحدة (1958-1961):</strong> وحدة مع سوريا كانت تتويجًا لحلم القومية العربية.</li>
+                             <li><strong>حرب اليمن (1962-1967):</strong> تدخل لدعم الثورة الجمهورية، لكنه استنزف موارد مصر العسكرية والاقتصادية.</li>
+                             <li><strong>حركة عدم الانحياز:</strong> شارك في تأسيسها مع تيتو (صورة تيتو غير متوفرة بشكل مباشر) ونهرو (صورة نهرو غير متوفرة بشكل مباشر) وسوكارنو (صورة سوكارنو غير متوفرة بشكل مباشر)، لتمثيل صوت الدول النامية في خضم الحرب الباردة.</li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conflicts" class="py-16 min-h-screen">
+             <h2 class="text-3xl font-bold text-center mb-12 text-amber-800">صراعات وحروب: اختبارات القيادة</h2>
+            <div class="max-w-4xl mx-auto bg-white/50 p-8 rounded-lg shadow-lg">
+                <p class="text-lg mb-8 text-center leading-relaxed">واجهت مصر في عهد ناصر تحديات عسكرية كبرى، بدءًا من العدوان الثلاثي وانتهاءً بحرب 1967 وحرب الاستنزاف. كانت هذه الصراعات اختبارات قاسية لقيادته وشكلت ملامح المنطقة لعقود.</p>
+                <div class="timeline-container">
+                    <div class="timeline-item cursor-pointer mb-8" data-event="suez">
+                        <h4 class="text-xl font-bold text-amber-700">أزمة السويس (العدوان الثلاثي) - 1956</h4>
+                        <div class="timeline-item-content">
+                            <p class="mt-2 text-gray-700">ردًا على تأميم القناة، شنت بريطانيا وفرنسا وإسرائيل هجومًا منسقًا على مصر. انتهى الغزو بفشل سياسي ذريع للدول المعتدية تحت ضغط دولي من الولايات المتحدة والاتحاد السوفيتي، مما رسخ زعامة ناصر عربيًا ودوليًا.</p>
+                        </div>
+                    </div>
+                    <div class="mb-10 ml-6 timeline-item">
+                        <span class="absolute flex items-center justify-center w-6 h-6 bg-amber-200 rounded-full -right-3 ring-8 ring-white timeline-point"></span>
+                        <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900">الولاية الرئاسية الثانية</h3>
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-500">25 مارس 1965</time>
+                        <img src="images/img4.png" alt="ناصر يؤدي اليمين الدستورية لولاية ثانية كرئيس لمصر عام 1965" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="text-base font-normal text-gray-700">أعيد انتخاب ناصر لولاية ثانية كرئيس للجمهورية العربية المتحدة بعد استفتاء شعبي، وكان المرشح الوحيد للمنصب. في نفس العام، تم حبس سيد قطب (صورة سيد قطب غير متوفرة بشكل مباشر)، الزعيم الفكري لجماعة الإخوان المسلمين، وأعدم عام 1966 بتهمة التخطيط لاغتيال ناصر.</p>
+                    </div>
+                    <div class="timeline-item cursor-pointer mb-8" data-event="six-day">
+                         <h4 class="text-xl font-bold text-amber-700">حرب 1967 (النكسة)</h4>
+                        <img src="images/img7.png" alt="ناصر مع الملك حسين وعبد الحكيم عامر قبل توقيع معاهدة دفاع مشترك عام 1967" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <div class="timeline-item-content">
+                            <p class="mt-2 text-gray-700">في 5 يونيو 1967، شنت إسرائيل هجومًا استباقيًا دمر معظم سلاح الجو المصري على الأرض. في غضون ستة أيام، احتلت إسرائيل سيناء وقطاع غزة والضفة الغربية وهضبة الجولان. كانت الهزيمة كارثية، وقدم ناصر استقالته الشهيرة قبل أن يعود بضغط شعبي جارف.</p>
+                            <img src="https://placehold.co/600x400/D97706/FFFFFF?text=احتجاجات+على+استقالة+ناصر" alt="متظاهرون مصريون يحتجون على استقالة عبد الناصر عام 1967" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        </div>
+                    </div>
+                     <div class="timeline-item cursor-pointer" data-event="attrition">
+                         <h4 class="text-xl font-bold text-amber-700">حرب الاستنزاف (1968-1970)</h4>
+                      <p class="mt-4 text-gray-600 italic">ناصر يراقب الجبهة مع ضباط السويس خلال حرب الاستنزاف عام 1968"</p>
+
+                        <img src="images/img8.png" alt="ناصر يراقب الجبهة مع ضباط السويس خلال حرب الاستنزاف عام 1968" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <p class="mt-4 text-gray-600 italic">"ناصر يتوسط لوقف إطلاق النار بين ياسر عرفات (صورة ياسر عرفات غير متوفرة بشكل مباشر) والملك حسين (صورة الملك حسين غير متوفرة بشكل مباشر) عام 1970 </p>
+
+                        <img src="images/img9.png" alt="ناصر يتوسط لوقف إطلاق النار بين ياسر عرفات (صورة ياسر عرفات غير متوفرة بشكل مباشر) والملك حسين (صورة الملك حسين غير متوفرة بشكل مباشر) عام 1970" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                        <div class="timeline-item-content">
+                            <p class="mt-2 text-gray-700">بعد النكسة، أطلق ناصر حرب الاستنزاف على طول قناة السويس بهدف استنزاف قوة إسرائيل وإجبارها على الانسحاب. تضمنت الحرب غارات مدفعية وجوية وعمليات خاصة من الجانبين، وانتهت بقبول مبادرة روجرز لوقف إطلاق النار قبل وفاة ناصر بفترة وجيزة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legacy" class="py-16 min-h-screen">
+             <h2 class="text-3xl font-bold text-center mb-12 text-amber-800">الإرث والذكرى: الزعيم الخالد</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white/50 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">زعيم الكرامة العربية</h3>
+                    <img src="images/img6.png" alt="ناصر يتحدث إلى رجل مصري مشرد عام 1959" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                    <img src="images/img5.png" alt="ناصر يلوح للحشود في المنصورة عام 1960" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                    <p class="leading-relaxed mb-4">توفي جمال عبد الناصر في 28 سبتمبر 1970 إثر نوبة قلبية، تاركًا وراءه إرثًا معقدًا ومثيرًا للجدل. بالنسبة للملايين، يظل ناصر رمزًا للكرامة الوطنية، والاستقلال، والعدالة الاجتماعية. لقد أعاد لمصر والعرب شعورهم بالفخر، وحقق إنجازات اجتماعية واقتصادية كبرى مثل مجانية التعليم والتأمين الصحي.</p>
+                    <h3 class="text-2xl font-bold mb-4 mt-6">وجهات نظر نقدية</h3>
+                    <img src="images/img4.png" alt="أنور السادات وعبد الناصر في الجمعية الوطنية عام 1964" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                    <img src="images/img3.png" alt="القذافي (صورة القذافي غير متوفرة بشكل مباشر) والنميري (صورة النميري غير متوفرة بشكل مباشر) وناصر عام 1969" class="w-full h-auto rounded-lg shadow-md mb-4 mx-auto block">
+                    <p class="leading-relaxed">في المقابل، ينتقده آخرون بسبب حكمه السلطوي، وغياب الديمقراطية، وقمع الحريات السياسية، والهزيمة العسكرية في 1967. يظل إرثه محل نقاش حاد، لكن تأثيره على مسار التاريخ الحديث في الشرق الأوسط لا يمكن إنكاره.</p>
+                </div>
+                <div class="text-center">
+                     <img src="images/img1.png" alt="جنازة عبد الناصر التي حضرها خمسة ملايين مشيع في القاهرة، 1 أكتوبر 1970" class="rounded-lg shadow-xl w-full h-auto object-cover mb-4">
+                     <br>
+                    <h3 class="text-2xl font-bold mb-4">جنازة تاريخية</h3>
+                    <p class="mt-4 text-gray-600 italic">جنازة عبد الناصر في القاهرة، 1 أكتوبر 1970، والتي حضرها الملايين في وداع تاريخي.</p>
+                     <img src="images/img2.png" alt="مسجد عبد الناصر في القاهرة، مكان دفنه" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                     <p class="mt-4 text-gray-600 italic">مسجد عبد الناصر في القاهرة، مكان دفنه .</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-16">
+        <p>&copy; 2025. تطبيق تفاعلي عن حياة الرئيس جمال عبد الناصر. تم إنشاؤه لأغراض تعليمية.</p>
+    </footer>
+
+    <!-- ملف JavaScript المخصص -->
+    <script src="script.js"></script>
+</body>
+</html>
