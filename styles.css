@@ -8,6 +8,12 @@ body {
     color: #4A4A4A;
 }
 
+.text-gray-900 {
+    --tw-text-opacity: 1;
+    color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+    margin-right: 21px;
+}
+
 /* تنسيق شريط التنقل */
 .active-nav {
     color: #D97706;
